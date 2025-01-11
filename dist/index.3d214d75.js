@@ -2952,41 +2952,94 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
 // Define your component
-const NewEle = ()=>{
+const Header = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "headr",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "This is the heading"
-            }, void 0, false, {
-                fileName: "index.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "This is a subheading"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                href: "/",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "logo-img",
+                    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
+                }, void 0, false, {
+                    fileName: "index.js",
+                    lineNumber: 10,
+                    columnNumber: 1
+                }, undefined)
             }, void 0, false, {
                 fileName: "index.js",
                 lineNumber: 9,
-                columnNumber: 7
+                columnNumber: 1
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "items",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Home"
+                    }, void 0, false, {
+                        fileName: "index.js",
+                        lineNumber: 14,
+                        columnNumber: 1
+                    }, undefined),
+                    " ",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Offers"
+                    }, void 0, false, {
+                        fileName: "index.js",
+                        lineNumber: 15,
+                        columnNumber: 1
+                    }, undefined),
+                    "  ",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Help"
+                    }, void 0, false, {
+                        fileName: "index.js",
+                        lineNumber: 16,
+                        columnNumber: 1
+                    }, undefined),
+                    "  ",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Cart"
+                    }, void 0, false, {
+                        fileName: "index.js",
+                        lineNumber: 17,
+                        columnNumber: 1
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "index.js",
+                lineNumber: 12,
+                columnNumber: 1
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 7,
-        columnNumber: 5
+        lineNumber: 8,
+        columnNumber: 1
     }, undefined);
 };
-_c = NewEle;
+_c = Header;
+const RootElement = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
+            fileName: "index.js",
+            lineNumber: 32,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false);
+};
+_c1 = RootElement;
 // Find the root DOM element
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 // Render the component
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(NewEle, {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RootElement, {}, void 0, false, {
     fileName: "index.js",
-    lineNumber: 18,
+    lineNumber: 43,
     columnNumber: 13
 }, undefined));
-var _c;
-$RefreshReg$(_c, "NewEle");
+var _c, _c1;
+$RefreshReg$(_c, "Header");
+$RefreshReg$(_c1, "RootElement");
 
   $parcel$ReactRefreshHelpers$e4e3.postlude(module);
 } finally {

@@ -1,0 +1,19 @@
+.headr{
+display: flex;
+justify-content: space-between;
+
+}
+.headr >a> img{
+    width: 80px;
+    margin-left: 50px;
+}
+.items{
+    display: flex;
+list-style: none;
+margin-right: 50px;
+}
+.items > li{
+    margin:10px;
+    padding: 10px;
+    text-decoration: none;
+}
