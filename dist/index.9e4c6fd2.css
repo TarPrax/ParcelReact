@@ -19,4 +19,21 @@
   padding: 10px;
   text-decoration: none;
 }
+
+.card {
+  width: 250px;
+  padding: 50px;
+}
+
+.card > img {
+  border-radius: 20px;
+  width: 100%;
+  height: 250px;
+}
+
+.rest-list {
+  flex-wrap: wrap;
+  padding-left: 50px;
+  display: flex;
+}
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
