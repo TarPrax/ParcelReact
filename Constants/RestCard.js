@@ -1,7 +1,8 @@
 import { Res } from "./Restaurants";
+import {IMG_CDN} from "./constants.js"
 
-const url =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
+  
 const RestCard = ({
   name,
   cloudinaryImageId,
@@ -11,7 +12,7 @@ const RestCard = ({
 }) => {
   return (
     <div className="card">
-      <img src={url + cloudinaryImageId}></img>
+      <img src={IMG_CDN + cloudinaryImageId}></img>
       <h3>{name}</h3>
       <h3>{cuisines.slice(0, 4).join(", ")}</h3>
       <h3>
