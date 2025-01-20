@@ -1,7 +1,7 @@
 import { useState } from "react";
 const [search, setSearch] = useState("Search Here");
 export const SearchFunction = () => {
-  const inputField = "Search Here";
+  const inputField = "Please Search Here";
 
   return (
     <div className="search">

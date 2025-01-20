@@ -19027,7 +19027,7 @@ $RefreshReg$(_c1, "DisplayCards");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Restaurants":"jkTNI","./constants.js":"3PhkM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jkTNI":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","./Restaurants":"jkTNI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./constants.js":"3PhkM"}],"jkTNI":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Res", ()=>Res);
@@ -20396,7 +20396,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 const [search, setSearch] = (0, _react.useState)("Search Here");
 const SearchFunction = ()=>{
-    const inputField = "Search Here";
+    const inputField = "Please Search Here";
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "search",
         children: [
