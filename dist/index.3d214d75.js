@@ -18892,6 +18892,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _restaurants = require("./Restaurants");
 var _constantsJs = require("./constants.js");
+const filterData = [];
 const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsString })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "card",
@@ -18938,25 +18939,55 @@ const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsSt
 };
 _c = RestCard;
 const DisplayCards = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "rest-list",
-        children: (0, _restaurants.Res).map((rest)=>{
-            return /*#__PURE__*/ (0, _react.createElement)(RestCard, {
-                ...rest.info,
-                key: rest.info.id,
-                __source: {
-                    fileName: "Constants/RestCard.js",
-                    lineNumber: 29,
-                    columnNumber: 16
-                },
-                __self: undefined
-            });
-        })
-    }, void 0, false, {
-        fileName: "Constants/RestCard.js",
-        lineNumber: 27,
-        columnNumber: 5
-    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "SearchFunconality",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "type here",
+                        value: "this"
+                    }, void 0, false, {
+                        fileName: "Constants/RestCard.js",
+                        lineNumber: 29,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        type: "submit",
+                        children: "Submit "
+                    }, void 0, false, {
+                        fileName: "Constants/RestCard.js",
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "Constants/RestCard.js",
+                lineNumber: 28,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "rest-list",
+                children: (0, _restaurants.Res).map((rest)=>{
+                    return /*#__PURE__*/ (0, _react.createElement)(RestCard, {
+                        ...rest.info,
+                        key: rest.info.id,
+                        __source: {
+                            fileName: "Constants/RestCard.js",
+                            lineNumber: 36,
+                            columnNumber: 18
+                        },
+                        __self: undefined
+                    });
+                })
+            }, void 0, false, {
+                fileName: "Constants/RestCard.js",
+                lineNumber: 34,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true);
 };
 _c1 = DisplayCards;
 exports.default = RestCard;

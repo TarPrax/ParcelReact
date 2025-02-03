@@ -1,8 +1,8 @@
 import { Res } from "./Restaurants";
-import {IMG_CDN} from "./constants.js"
+import { IMG_CDN } from "./constants.js";
 
+const filterData = [];
 
-  
 const RestCard = ({
   name,
   cloudinaryImageId,
@@ -24,11 +24,19 @@ const RestCard = ({
 
 export const DisplayCards = () => {
   return (
-    <div className="rest-list">
-      {Res.map((rest) => {
-        return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
-      })}
-    </div>
+    <>
+      <div className="SearchFunconality">
+        <input type="text" placeholder="type here" value="this"></input>
+        <button type="submit">Submit </button>
+        {/* {(filterData = Res.filter((person) => person.info.name === "King"))} */}
+      </div>
+
+      <div className="rest-list">
+        {Res.map((rest) => {
+          return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
+        })}
+      </div>
+    </>
   );
 };
 
