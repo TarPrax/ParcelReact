@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Layout from "./Constants/Layout";
-import { Body } from "./Constants/Body";
+// import Layout from "./Constants/Layout";
+// import { Body } from "./Constants/Body";
+import Header from "./Constants/Header";
+import Body from "./Constants/Body";
 // Define your component
 
 const RootElement = () => {
   return (
     <>
-      <Body></Body>
-      <Layout />
+      <Header />
+      <Body />
     </>
   );
 };
