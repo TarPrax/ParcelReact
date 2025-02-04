@@ -1,7 +1,6 @@
+import { useState } from "react";
 import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
-
-const filterData = [];
 
 const RestCard = ({
   name,
@@ -22,17 +21,41 @@ const RestCard = ({
   );
 };
 
+function filterData(searchText, resData) {
+  return resData.filter((rest) => rest.info.name.includes(searchText));
+}
+
 export const DisplayCards = () => {
+  // const searchTxt = "KFC";
+  const [resData, setResData] = useState(Res);
+  const [searchTxt, setSearchText] = useState("");
+  const [act, setAct] = useState("fasle");
+
   return (
     <>
-      <div className="SearchFunconality">
-        <input type="text" placeholder="type here" value="this"></input>
-        <button type="submit">Submit </button>
-        {/* {(filterData = Res.filter((person) => person.info.name === "King"))} */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchTxt}
+          className="search-input"
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        ></input>
+        <button
+          className="search-btn"
+          onClick={() => {
+            const data = filterData(searchTxt, resData);
+            setResData(data);
+          }}
+        >
+          Search
+        </button>
       </div>
 
       <div className="rest-list">
-        {Res.map((rest) => {
+        {resData.map((rest) => {
           return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
         })}
       </div>

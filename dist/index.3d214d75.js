@@ -18892,7 +18892,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _restaurants = require("./Restaurants");
 var _constantsJs = require("./constants.js");
-const filterData = [];
+var _s = $RefreshSig$();
 const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsString })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "card",
@@ -18901,21 +18901,21 @@ const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsSt
                 src: (0, _constantsJs.IMG_CDN) + cloudinaryImageId
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 15,
+                lineNumber: 14,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: name
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 16,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: cuisines.slice(0, 4).join(", ")
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 17,
+                lineNumber: 16,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -18927,55 +18927,71 @@ const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsSt
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 18,
+                lineNumber: 17,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Constants/RestCard.js",
-        lineNumber: 14,
+        lineNumber: 13,
         columnNumber: 5
     }, undefined);
 };
 _c = RestCard;
+function filterData(searchText, resData) {
+    return resData.filter((rest)=>rest.info.name.includes(searchText));
+}
 const DisplayCards = ()=>{
+    _s();
+    // const searchTxt = "KFC";
+    const [resData, setResData] = (0, _react.useState)((0, _restaurants.Res));
+    const [searchTxt, setSearchText] = (0, _react.useState)("");
+    const [act, setAct] = (0, _react.useState)("fasle");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "SearchFunconality",
+                className: "search-container",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "text",
-                        placeholder: "type here",
-                        value: "this"
+                        placeholder: "Search",
+                        value: searchTxt,
+                        className: "search-input",
+                        onChange: (e)=>{
+                            setSearchText(e.target.value);
+                        }
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 29,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        type: "submit",
-                        children: "Submit "
+                        className: "search-btn",
+                        onClick: ()=>{
+                            const data = filterData(searchTxt, resData);
+                            setResData(data);
+                        },
+                        children: "Search"
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 30,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 28,
+                lineNumber: 36,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "rest-list",
-                children: (0, _restaurants.Res).map((rest)=>{
+                children: resData.map((rest)=>{
                     return /*#__PURE__*/ (0, _react.createElement)(RestCard, {
                         ...rest.info,
                         key: rest.info.id,
                         __source: {
                             fileName: "Constants/RestCard.js",
-                            lineNumber: 36,
+                            lineNumber: 59,
                             columnNumber: 18
                         },
                         __self: undefined
@@ -18983,12 +18999,13 @@ const DisplayCards = ()=>{
                 })
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 34,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
+_s(DisplayCards, "x4Dv7K7WFkniBk0ibuNUgr8XiUE=");
 _c1 = DisplayCards;
 exports.default = RestCard;
 var _c, _c1;
