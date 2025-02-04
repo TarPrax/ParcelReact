@@ -18922,7 +18922,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./RestCard":"gAWmp"}],"gAWmp":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","./RestCard":"gAWmp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gAWmp":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b818 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -18950,7 +18950,7 @@ const DisplayCards = ()=>{
             restaurant: rest
         }, void 0, false, {
             fileName: "Constants/RestCard.js",
-            lineNumber: 13,
+            lineNumber: 14,
             columnNumber: 9
         }, undefined);
     });
@@ -18966,7 +18966,7 @@ $RefreshReg$(_c1, "DisplayCards");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"./Restaurants":"jkTNI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jkTNI":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","./Restaurants":"jkTNI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jkTNI":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Res", ()=>Res);

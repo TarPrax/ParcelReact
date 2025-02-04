@@ -8,6 +8,7 @@ return(
 
 }
 
+
 export const DisplayCards=()=>{
     return (Res.map((rest)=>{
         <RestCard  restaurant={rest}/>
