@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
 
@@ -25,16 +25,15 @@ function filterData(searchText, resData) {
   return resData.filter((rest) => rest.info.name.includes(searchText));
 }
 
-
-
-
-
 export const DisplayCards = () => {
   // const searchTxt = "KFC";
   const [resData, setResData] = useState(Res);
   const [searchTxt, setSearchText] = useState("");
   const [act, setAct] = useState("fasle");
 
+  useEffect(() => {
+    setResData(Res);
+  }, [searchTxt]);
 
   return (
     <>

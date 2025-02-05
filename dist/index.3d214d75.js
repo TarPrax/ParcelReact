@@ -18947,6 +18947,11 @@ const DisplayCards = ()=>{
     const [resData, setResData] = (0, _react.useState)((0, _restaurants.Res));
     const [searchTxt, setSearchText] = (0, _react.useState)("");
     const [act, setAct] = (0, _react.useState)("fasle");
+    (0, _react.useEffect)(()=>{
+        setResData((0, _restaurants.Res));
+    }, [
+        searchTxt
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18962,7 +18967,7 @@ const DisplayCards = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 42,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18974,13 +18979,13 @@ const DisplayCards = ()=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 51,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 41,
+                lineNumber: 40,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18991,7 +18996,7 @@ const DisplayCards = ()=>{
                         key: rest.info.id,
                         __source: {
                             fileName: "Constants/RestCard.js",
-                            lineNumber: 64,
+                            lineNumber: 63,
                             columnNumber: 18
                         },
                         __self: undefined
@@ -18999,13 +19004,13 @@ const DisplayCards = ()=>{
                 })
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 62,
+                lineNumber: 61,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(DisplayCards, "x4Dv7K7WFkniBk0ibuNUgr8XiUE=");
+_s(DisplayCards, "V0w4UrTSjaXu/QNqwyQyrb4apxM=");
 _c1 = DisplayCards;
 exports.default = RestCard;
 var _c, _c1;
