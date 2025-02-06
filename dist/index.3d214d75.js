@@ -19264,6 +19264,8 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _restaurants = require("./Restaurants");
 var _constantsJs = require("./constants.js");
+var _shimmerJs = require("./Shimmer.js");
+var _shimmerJsDefault = parcelHelpers.interopDefault(_shimmerJs);
 var _s = $RefreshSig$();
 const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsString })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19318,20 +19320,35 @@ _c = RestCard;
 // }
 // getResData();
 function filterData(searchText, resData) {
-    return resData.filter((rest)=>rest.info.name.includes(searchText));
+    return resData.filter((rest)=>rest.info.name.toLowerCase().includes(searchText.toLowerCase()));
 }
+const NoRestDisplay = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+        children: "No Matching Restaurants to show "
+    }, void 0, false, {
+        fileName: "Constants/RestCard.js",
+        lineNumber: 40,
+        columnNumber: 10
+    }, undefined);
+};
+_c1 = NoRestDisplay;
 const DisplayCards = ()=>{
     _s();
     // const searchTxt = "KFC";
     const [resData, setResData] = (0, _react.useState)((0, _restaurants.Res));
+    const [disp, setDisp] = (0, _react.useState)();
     const [searchTxt, setSearchText] = (0, _react.useState)("");
-    const [act, setAct] = (0, _react.useState)("fasle");
+    const [act, setAct] = (0, _react.useState)("false");
     (0, _react.useEffect)(()=>{
         setResData((0, _restaurants.Res));
     }, [
         searchTxt
     ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    return resData.length == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerJsDefault.default), {}, void 0, false, {
+        fileName: "Constants/RestCard.js",
+        lineNumber: 55,
+        columnNumber: 5
+    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "search-container",
@@ -19346,7 +19363,7 @@ const DisplayCards = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 50,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -19358,50 +19375,60 @@ const DisplayCards = ()=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 59,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 49,
+                lineNumber: 58,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("noRestDisplay", {}, void 0, false, {
+                fileName: "Constants/RestCard.js",
+                lineNumber: 78,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "rest-list",
-                children: resData.map((rest)=>{
+                children: resData.length > 0 ? resData.map((rest)=>{
                     return /*#__PURE__*/ (0, _react.createElement)(RestCard, {
                         ...rest.info,
                         key: rest.info.id,
                         __source: {
                             fileName: "Constants/RestCard.js",
-                            lineNumber: 72,
-                            columnNumber: 18
+                            lineNumber: 82,
+                            columnNumber: 20
                         },
                         __self: undefined
                     });
-                })
+                }) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(NoRestDisplay, {}, void 0, false, {
+                    fileName: "Constants/RestCard.js",
+                    lineNumber: 85,
+                    columnNumber: 11
+                }, undefined)
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 70,
+                lineNumber: 79,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(DisplayCards, "V0w4UrTSjaXu/QNqwyQyrb4apxM=");
-_c1 = DisplayCards;
+_s(DisplayCards, "0qOlLkzIHryLKbPmTJAY395gXtQ=");
+_c2 = DisplayCards;
 exports.default = RestCard;
-var _c, _c1;
+var _c, _c1, _c2;
 $RefreshReg$(_c, "RestCard");
-$RefreshReg$(_c1, "DisplayCards");
+$RefreshReg$(_c1, "NoRestDisplay");
+$RefreshReg$(_c2, "DisplayCards");
 
   $parcel$ReactRefreshHelpers$b818.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Restaurants":"jkTNI","./constants.js":"3PhkM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jkTNI":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Restaurants":"jkTNI","./constants.js":"3PhkM","./Shimmer.js":"epPcH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jkTNI":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Res", ()=>Res);
@@ -20758,6 +20785,37 @@ parcelHelpers.export(exports, "Res_Api", ()=>Res_Api);
 const IMG_CDN = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 const Res_Api = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1417761&lng=72.77094149999999";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aQL8O","dIizP","bB7Pu"], "bB7Pu", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"epPcH":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$feac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$feac.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const Shimmer = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: " Shimmer UI loading....... "
+        }, void 0, false, {
+            fileName: "Constants/Shimmer.js",
+            lineNumber: 4,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false);
+};
+_c = Shimmer;
+exports.default = Shimmer;
+var _c;
+$RefreshReg$(_c, "Shimmer");
+
+  $parcel$ReactRefreshHelpers$feac.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["aQL8O","dIizP","bB7Pu"], "bB7Pu", "parcelRequire94c2")
 
 //# sourceMappingURL=index.3d214d75.js.map

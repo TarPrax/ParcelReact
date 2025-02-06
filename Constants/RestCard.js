@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
 import { Res_Api } from "./constants.js";
-
+import Shimmer from "./Shimmer.js";
 const RestCard = ({
   name,
   cloudinaryImageId,
@@ -31,20 +31,29 @@ const RestCard = ({
 // getResData();
 
 function filterData(searchText, resData) {
-  return resData.filter((rest) => rest.info.name.includes(searchText));
+  return resData.filter((rest) =>
+    rest.info.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 }
+
+const NoRestDisplay = () => {
+  return <h1>No Matching Restaurants to show </h1>;
+};
 
 export const DisplayCards = () => {
   // const searchTxt = "KFC";
   const [resData, setResData] = useState(Res);
+  const [disp, setDisp] = useState();
   const [searchTxt, setSearchText] = useState("");
-  const [act, setAct] = useState("fasle");
+  const [act, setAct] = useState("false");
 
   useEffect(() => {
     setResData(Res);
   }, [searchTxt]);
 
-  return (
+  return resData.length == 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <div className="search-container">
         <input
@@ -66,11 +75,17 @@ export const DisplayCards = () => {
           Search
         </button>
       </div>
-
+      <noRestDisplay />
       <div className="rest-list">
-        {resData.map((rest) => {
-          return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
-        })}
+        {resData.length > 0 ? (
+          resData.map((rest) => {
+            return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
+          })
+        ) : (
+          <NoRestDisplay />
+        )}
+
+        {}
       </div>
     </>
   );
