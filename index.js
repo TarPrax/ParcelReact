@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+const cors = require("cors");
 // import Layout from "./Constants/Layout";
 // import { Body } from "./Constants/Body";
 import Header from "./Constants/Header";

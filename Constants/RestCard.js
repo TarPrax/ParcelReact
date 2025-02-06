@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
+import { Res_Api } from "./constants.js";
 
 const RestCard = ({
   name,
@@ -20,6 +21,14 @@ const RestCard = ({
     </div>
   );
 };
+
+// Will be tested on local PC
+// async function getResData() {
+//   const response = await fetch(Res_Api, mode: 'no-cors');
+//   const data = await response.json();
+//   console.log(data);
+// }
+// getResData();
 
 function filterData(searchText, resData) {
   return resData.filter((rest) => rest.info.name.includes(searchText));

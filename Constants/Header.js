@@ -1,23 +1,42 @@
-const Header =()=>{
-return (
+import { useState } from "react";
 
-<div className="headr">
-<a href="/">
-<img className="logo-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"></img>
-</a>
-<ul className="items">
-
-<li>Home</li> 
-<li>Offers</li>  
-<li>Help</li>  
-<li>Cart</li>   
-
-</ul>
-
-</div>
-
-)
-
-
-}
+const Header = () => {
+  const [log, setLog] = useState(true);
+  return (
+    <div className="headr">
+      <a href="/">
+        <img
+          className="logo-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
+        ></img>
+      </a>
+      <ul className="items">
+        <li>Home</li>
+        <li>Offers</li>
+        <li>Help</li>
+        <li>Cart</li>
+      </ul>
+      <div className="loginButton">
+        {log ? (
+          <button
+            onClick={() => {
+              setLog(false);
+            }}
+          >
+            {" "}
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setLog(true);
+            }}
+          >
+            Login
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
 export default Header;

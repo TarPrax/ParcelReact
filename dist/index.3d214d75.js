@@ -2957,18 +2957,19 @@ var _header = require("./Constants/Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
 var _body = require("./Constants/Body");
 var _bodyDefault = parcelHelpers.interopDefault(_body);
+const cors = require("4a748ef0d40e6850");
 // Define your component
 const RootElement = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 12,
+                lineNumber: 13,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 13,
+                lineNumber: 14,
                 columnNumber: 7
             }, undefined)
         ]
@@ -2980,7 +2981,7 @@ const root = (0, _clientDefault.default).createRoot(document.getElementById("roo
 // Render the component
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RootElement, {}, void 0, false, {
     fileName: "index.js",
-    lineNumber: 22,
+    lineNumber: 23,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2991,7 +2992,7 @@ $RefreshReg$(_c, "RootElement");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Constants/Header":"lfe44","./Constants/Body":"fj86V"}],"iTorj":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","4a748ef0d40e6850":"j1GD8","./Constants/Header":"lfe44","./Constants/Body":"fj86V","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -18586,7 +18587,464 @@ module.exports = require("b0f0e6b9e8349dac");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{"6f0162e9ab224cd4":"21dqq"}],"gkKU3":[function(require,module,exports,__globalThis) {
+},{"6f0162e9ab224cd4":"21dqq"}],"j1GD8":[function(require,module,exports,__globalThis) {
+(function() {
+    'use strict';
+    var assign = require("7d6f4cc4aa59d781");
+    var vary = require("a19c3ef113830b18");
+    var defaults = {
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+    };
+    function isString(s) {
+        return typeof s === 'string' || s instanceof String;
+    }
+    function isOriginAllowed(origin, allowedOrigin) {
+        if (Array.isArray(allowedOrigin)) {
+            for(var i = 0; i < allowedOrigin.length; ++i){
+                if (isOriginAllowed(origin, allowedOrigin[i])) return true;
+            }
+            return false;
+        } else if (isString(allowedOrigin)) return origin === allowedOrigin;
+        else if (allowedOrigin instanceof RegExp) return allowedOrigin.test(origin);
+        else return !!allowedOrigin;
+    }
+    function configureOrigin(options, req) {
+        var requestOrigin = req.headers.origin, headers = [], isAllowed;
+        if (!options.origin || options.origin === '*') // allow any origin
+        headers.push([
+            {
+                key: 'Access-Control-Allow-Origin',
+                value: '*'
+            }
+        ]);
+        else if (isString(options.origin)) {
+            // fixed origin
+            headers.push([
+                {
+                    key: 'Access-Control-Allow-Origin',
+                    value: options.origin
+                }
+            ]);
+            headers.push([
+                {
+                    key: 'Vary',
+                    value: 'Origin'
+                }
+            ]);
+        } else {
+            isAllowed = isOriginAllowed(requestOrigin, options.origin);
+            // reflect origin
+            headers.push([
+                {
+                    key: 'Access-Control-Allow-Origin',
+                    value: isAllowed ? requestOrigin : false
+                }
+            ]);
+            headers.push([
+                {
+                    key: 'Vary',
+                    value: 'Origin'
+                }
+            ]);
+        }
+        return headers;
+    }
+    function configureMethods(options) {
+        var methods = options.methods;
+        if (methods.join) methods = options.methods.join(','); // .methods is an array, so turn it into a string
+        return {
+            key: 'Access-Control-Allow-Methods',
+            value: methods
+        };
+    }
+    function configureCredentials(options) {
+        if (options.credentials === true) return {
+            key: 'Access-Control-Allow-Credentials',
+            value: 'true'
+        };
+        return null;
+    }
+    function configureAllowedHeaders(options, req) {
+        var allowedHeaders = options.allowedHeaders || options.headers;
+        var headers = [];
+        if (!allowedHeaders) {
+            allowedHeaders = req.headers['access-control-request-headers']; // .headers wasn't specified, so reflect the request headers
+            headers.push([
+                {
+                    key: 'Vary',
+                    value: 'Access-Control-Request-Headers'
+                }
+            ]);
+        } else if (allowedHeaders.join) allowedHeaders = allowedHeaders.join(','); // .headers is an array, so turn it into a string
+        if (allowedHeaders && allowedHeaders.length) headers.push([
+            {
+                key: 'Access-Control-Allow-Headers',
+                value: allowedHeaders
+            }
+        ]);
+        return headers;
+    }
+    function configureExposedHeaders(options) {
+        var headers = options.exposedHeaders;
+        if (!headers) return null;
+        else if (headers.join) headers = headers.join(','); // .headers is an array, so turn it into a string
+        if (headers && headers.length) return {
+            key: 'Access-Control-Expose-Headers',
+            value: headers
+        };
+        return null;
+    }
+    function configureMaxAge(options) {
+        var maxAge = (typeof options.maxAge === 'number' || options.maxAge) && options.maxAge.toString();
+        if (maxAge && maxAge.length) return {
+            key: 'Access-Control-Max-Age',
+            value: maxAge
+        };
+        return null;
+    }
+    function applyHeaders(headers, res) {
+        for(var i = 0, n = headers.length; i < n; i++){
+            var header = headers[i];
+            if (header) {
+                if (Array.isArray(header)) applyHeaders(header, res);
+                else if (header.key === 'Vary' && header.value) vary(res, header.value);
+                else if (header.value) res.setHeader(header.key, header.value);
+            }
+        }
+    }
+    function cors(options, req, res, next) {
+        var headers = [], method = req.method && req.method.toUpperCase && req.method.toUpperCase();
+        if (method === 'OPTIONS') {
+            // preflight
+            headers.push(configureOrigin(options, req));
+            headers.push(configureCredentials(options, req));
+            headers.push(configureMethods(options, req));
+            headers.push(configureAllowedHeaders(options, req));
+            headers.push(configureMaxAge(options, req));
+            headers.push(configureExposedHeaders(options, req));
+            applyHeaders(headers, res);
+            if (options.preflightContinue) next();
+            else {
+                // Safari (and potentially other browsers) need content-length 0,
+                //   for 204 or they just hang waiting for a body
+                res.statusCode = options.optionsSuccessStatus;
+                res.setHeader('Content-Length', '0');
+                res.end();
+            }
+        } else {
+            // actual response
+            headers.push(configureOrigin(options, req));
+            headers.push(configureCredentials(options, req));
+            headers.push(configureExposedHeaders(options, req));
+            applyHeaders(headers, res);
+            next();
+        }
+    }
+    function middlewareWrapper(o) {
+        // if options are static (either via defaults or custom options passed in), wrap in a function
+        var optionsCallback = null;
+        if (typeof o === 'function') optionsCallback = o;
+        else optionsCallback = function(req, cb) {
+            cb(null, o);
+        };
+        return function corsMiddleware(req, res, next) {
+            optionsCallback(req, function(err, options) {
+                if (err) next(err);
+                else {
+                    var corsOptions = assign({}, defaults, options);
+                    var originCallback = null;
+                    if (corsOptions.origin && typeof corsOptions.origin === 'function') originCallback = corsOptions.origin;
+                    else if (corsOptions.origin) originCallback = function(origin, cb) {
+                        cb(null, corsOptions.origin);
+                    };
+                    if (originCallback) originCallback(req.headers.origin, function(err2, origin) {
+                        if (err2 || !origin) next(err2);
+                        else {
+                            corsOptions.origin = origin;
+                            cors(corsOptions, req, res, next);
+                        }
+                    });
+                    else next();
+                }
+            });
+        };
+    }
+    // can pass either an options hash, an options delegate, or nothing
+    module.exports = middlewareWrapper;
+})();
+
+},{"7d6f4cc4aa59d781":"7OXxh","a19c3ef113830b18":"lFBRS"}],"7OXxh":[function(require,module,exports,__globalThis) {
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/ 'use strict';
+/* eslint-disable no-unused-vars */ var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+function toObject(val) {
+    if (val === null || val === undefined) throw new TypeError('Object.assign cannot be called with null or undefined');
+    return Object(val);
+}
+function shouldUseNative() {
+    try {
+        if (!Object.assign) return false;
+        // Detect buggy property enumeration order in older V8 versions.
+        // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+        var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+        test1[5] = 'de';
+        if (Object.getOwnPropertyNames(test1)[0] === '5') return false;
+        // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+        var test2 = {};
+        for(var i = 0; i < 10; i++)test2['_' + String.fromCharCode(i)] = i;
+        var order2 = Object.getOwnPropertyNames(test2).map(function(n) {
+            return test2[n];
+        });
+        if (order2.join('') !== '0123456789') return false;
+        // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+        var test3 = {};
+        'abcdefghijklmnopqrst'.split('').forEach(function(letter) {
+            test3[letter] = letter;
+        });
+        if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') return false;
+        return true;
+    } catch (err) {
+        // We don't expect any of the above to throw, but better to be safe.
+        return false;
+    }
+}
+module.exports = shouldUseNative() ? Object.assign : function(target, source) {
+    var from;
+    var to = toObject(target);
+    var symbols;
+    for(var s = 1; s < arguments.length; s++){
+        from = Object(arguments[s]);
+        for(var key in from)if (hasOwnProperty.call(from, key)) to[key] = from[key];
+        if (getOwnPropertySymbols) {
+            symbols = getOwnPropertySymbols(from);
+            for(var i = 0; i < symbols.length; i++)if (propIsEnumerable.call(from, symbols[i])) to[symbols[i]] = from[symbols[i]];
+        }
+    }
+    return to;
+};
+
+},{}],"lFBRS":[function(require,module,exports,__globalThis) {
+/*!
+ * vary
+ * Copyright(c) 2014-2017 Douglas Christopher Wilson
+ * MIT Licensed
+ */ 'use strict';
+/**
+ * Module exports.
+ */ module.exports = vary;
+module.exports.append = append;
+/**
+ * RegExp to match field-name in RFC 7230 sec 3.2
+ *
+ * field-name    = token
+ * token         = 1*tchar
+ * tchar         = "!" / "#" / "$" / "%" / "&" / "'" / "*"
+ *               / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
+ *               / DIGIT / ALPHA
+ *               ; any VCHAR, except delimiters
+ */ var FIELD_NAME_REGEXP = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+/**
+ * Append a field to a vary header.
+ *
+ * @param {String} header
+ * @param {String|Array} field
+ * @return {String}
+ * @public
+ */ function append(header, field) {
+    if (typeof header !== 'string') throw new TypeError('header argument is required');
+    if (!field) throw new TypeError('field argument is required');
+    // get fields array
+    var fields = !Array.isArray(field) ? parse(String(field)) : field;
+    // assert on invalid field names
+    for(var j = 0; j < fields.length; j++){
+        if (!FIELD_NAME_REGEXP.test(fields[j])) throw new TypeError('field argument contains an invalid header name');
+    }
+    // existing, unspecified vary
+    if (header === '*') return header;
+    // enumerate current values
+    var val = header;
+    var vals = parse(header.toLowerCase());
+    // unspecified vary
+    if (fields.indexOf('*') !== -1 || vals.indexOf('*') !== -1) return '*';
+    for(var i = 0; i < fields.length; i++){
+        var fld = fields[i].toLowerCase();
+        // append value (case-preserving)
+        if (vals.indexOf(fld) === -1) {
+            vals.push(fld);
+            val = val ? val + ', ' + fields[i] : fields[i];
+        }
+    }
+    return val;
+}
+/**
+ * Parse a vary header into an array.
+ *
+ * @param {String} header
+ * @return {Array}
+ * @private
+ */ function parse(header) {
+    var end = 0;
+    var list = [];
+    var start = 0;
+    // gather tokens
+    for(var i = 0, len = header.length; i < len; i++)switch(header.charCodeAt(i)){
+        case 0x20:
+            /*   */ if (start === end) start = end = i + 1;
+            break;
+        case 0x2c:
+            /* , */ list.push(header.substring(start, end));
+            start = end = i + 1;
+            break;
+        default:
+            end = i + 1;
+            break;
+    }
+    // final token
+    list.push(header.substring(start, end));
+    return list;
+}
+/**
+ * Mark that a request is varied on a header field.
+ *
+ * @param {Object} res
+ * @param {String|Array} field
+ * @public
+ */ function vary(res, field) {
+    if (!res || !res.getHeader || !res.setHeader) // quack quack
+    throw new TypeError('res argument is required');
+    // get existing header
+    var val = res.getHeader('Vary') || '';
+    var header = Array.isArray(val) ? val.join(', ') : String(val);
+    // set new header
+    if (val = append(header, field)) res.setHeader('Vary', val);
+}
+
+},{}],"lfe44":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$4d45 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4d45.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _s = $RefreshSig$();
+const Header = ()=>{
+    _s();
+    const [log, setLog] = (0, _react.useState)(true);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "headr",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                href: "/",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "logo-img",
+                    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
+                }, void 0, false, {
+                    fileName: "Constants/Header.js",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "Constants/Header.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "items",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Home"
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 14,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Offers"
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 15,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Help"
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: "Cart"
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 17,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "Constants/Header.js",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "loginButton",
+                children: log ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: ()=>{
+                        setLog(false);
+                    },
+                    children: [
+                        " ",
+                        "Logout"
+                    ]
+                }, void 0, true, {
+                    fileName: "Constants/Header.js",
+                    lineNumber: 21,
+                    columnNumber: 11
+                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: ()=>{
+                        setLog(true);
+                    },
+                    children: "Login"
+                }, void 0, false, {
+                    fileName: "Constants/Header.js",
+                    lineNumber: 30,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
+                fileName: "Constants/Header.js",
+                lineNumber: 19,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "Constants/Header.js",
+        lineNumber: 6,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Header, "VOTjDHOQ3H7YvZ7JfLb9vjQaN6I=");
+_c = Header;
+exports.default = Header;
+var _c;
+$RefreshReg$(_c, "Header");
+
+  $parcel$ReactRefreshHelpers$4d45.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -18761,93 +19219,7 @@ function registerExportsForReactRefresh(module1) {
 },{"7422ead32dcc1e6b":"786KC","630b62916b1ae0e7":"4SQxb"}],"4SQxb":[function(require,module,exports,__globalThis) {
 module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
 
-},{}],"lfe44":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$4d45 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$4d45.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const Header = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "headr",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                href: "/",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    className: "logo-img",
-                    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
-                }, void 0, false, {
-                    fileName: "Constants/Header.js",
-                    lineNumber: 6,
-                    columnNumber: 1
-                }, undefined)
-            }, void 0, false, {
-                fileName: "Constants/Header.js",
-                lineNumber: 5,
-                columnNumber: 1
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "items",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: "Home"
-                    }, void 0, false, {
-                        fileName: "Constants/Header.js",
-                        lineNumber: 10,
-                        columnNumber: 1
-                    }, undefined),
-                    " ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: "Offers"
-                    }, void 0, false, {
-                        fileName: "Constants/Header.js",
-                        lineNumber: 11,
-                        columnNumber: 1
-                    }, undefined),
-                    "  ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: "Help"
-                    }, void 0, false, {
-                        fileName: "Constants/Header.js",
-                        lineNumber: 12,
-                        columnNumber: 1
-                    }, undefined),
-                    "  ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: "Cart"
-                    }, void 0, false, {
-                        fileName: "Constants/Header.js",
-                        lineNumber: 13,
-                        columnNumber: 1
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "Constants/Header.js",
-                lineNumber: 8,
-                columnNumber: 1
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "Constants/Header.js",
-        lineNumber: 4,
-        columnNumber: 1
-    }, undefined);
-};
-_c = Header;
-exports.default = Header;
-var _c;
-$RefreshReg$(_c, "Header");
-
-  $parcel$ReactRefreshHelpers$4d45.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fj86V":[function(require,module,exports,__globalThis) {
+},{}],"fj86V":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$f531 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -18901,21 +19273,21 @@ const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsSt
                 src: (0, _constantsJs.IMG_CDN) + cloudinaryImageId
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 14,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: name
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 15,
+                lineNumber: 16,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: cuisines.slice(0, 4).join(", ")
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -18927,17 +19299,24 @@ const RestCard = ({ name, cloudinaryImageId, cuisines, avgRating, totalRatingsSt
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 17,
+                lineNumber: 18,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Constants/RestCard.js",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 5
     }, undefined);
 };
 _c = RestCard;
+// Will be tested on local PC
+// async function getResData() {
+//   const response = await fetch(Res_Api, mode: 'no-cors');
+//   const data = await response.json();
+//   console.log(data);
+// }
+// getResData();
 function filterData(searchText, resData) {
     return resData.filter((rest)=>rest.info.name.includes(searchText));
 }
@@ -18967,7 +19346,7 @@ const DisplayCards = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 41,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18979,13 +19358,13 @@ const DisplayCards = ()=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 50,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 40,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18996,7 +19375,7 @@ const DisplayCards = ()=>{
                         key: rest.info.id,
                         __source: {
                             fileName: "Constants/RestCard.js",
-                            lineNumber: 63,
+                            lineNumber: 72,
                             columnNumber: 18
                         },
                         __self: undefined
@@ -19004,7 +19383,7 @@ const DisplayCards = ()=>{
                 })
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 61,
+                lineNumber: 70,
                 columnNumber: 7
             }, undefined)
         ]
@@ -20375,7 +20754,9 @@ const Res = [
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "IMG_CDN", ()=>IMG_CDN);
+parcelHelpers.export(exports, "Res_Api", ()=>Res_Api);
 const IMG_CDN = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+const Res_Api = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1417761&lng=72.77094149999999";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aQL8O","dIizP","bB7Pu"], "bB7Pu", "parcelRequire94c2")
 
