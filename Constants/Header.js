@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [log, setLog] = useState(true);
@@ -11,10 +12,18 @@ const Header = () => {
         ></img>
       </a>
       <ul className="items">
-        <li>Home</li>
-        <li>Offers</li>
-        <li>Help</li>
-        <li>Cart</li>
+        <li>
+          <Link to="/"></Link>Home
+        </li>
+        <li>
+          <Link to="/about"></Link>About us
+        </li>
+        <li>
+          <Link to="/contact"></Link>Contact
+        </li>
+        <li>
+          <Link to="/cart"></Link>Cart
+        </li>
       </ul>
       <div className="loginButton">
         {log ? (
