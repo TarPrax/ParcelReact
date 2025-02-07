@@ -24,11 +24,12 @@ const RestCard = ({
 
 // Will be tested on local PC
 // async function getResData() {
-//   const response = await fetch(Res_Api, mode: 'no-cors');
+//   const response = await fetch(Res_Api);
 //   const data = await response.json();
 //   console.log(data);
 // }
 // getResData();
+//Tested working fine.
 
 function filterData(searchText, resData) {
   return resData.filter((rest) =>
@@ -52,10 +53,11 @@ export const DisplayCards = () => {
   }, [searchTxt]);
 
   return resData.length == 0 ? (
-    <Shimmer />
+    <NoRestDisplay />
   ) : (
     <>
       <div className="search-container">
+        
         <input
           type="text"
           placeholder="Search"
@@ -75,7 +77,7 @@ export const DisplayCards = () => {
           Search
         </button>
       </div>
-      <noRestDisplay />
+      
       <div className="rest-list">
         {resData.length > 0 ? (
           resData.map((rest) => {

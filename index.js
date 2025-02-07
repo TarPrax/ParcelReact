@@ -5,6 +5,7 @@ const cors = require("cors");
 // import { Body } from "./Constants/Body";
 import Header from "./Constants/Header";
 import Body from "./Constants/Body";
+import Footer from "./Constants/Footer";
 // Define your component
 
 const RootElement = () => {
@@ -12,6 +13,7 @@ const RootElement = () => {
     <>
       <Header />
       <Body />
+      <Footer/>
     </>
   );
 };
