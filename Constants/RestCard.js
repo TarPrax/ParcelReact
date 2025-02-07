@@ -57,7 +57,6 @@ export const DisplayCards = () => {
   ) : (
     <>
       <div className="search-container">
-        
         <input
           type="text"
           placeholder="Search"
@@ -77,11 +76,15 @@ export const DisplayCards = () => {
           Search
         </button>
       </div>
-      
+
       <div className="rest-list">
         {resData.length > 0 ? (
           resData.map((rest) => {
-            return <RestCard {...rest.info} key={rest.info.id}></RestCard>;
+            return (
+              <Link to={"/restaurants/" + rest.info.id} key={rest.info.id}>
+                <RestCard {...rest.info} key={rest.info.id}></RestCard>
+              </Link>
+            );
           })
         ) : (
           <NoRestDisplay />

@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
     getRestaurantData();
   });
   async function getRestaurantData() {
-    const data = await fetch(Res_Data_Api);
+    const data = await fetch(Res_Data_Api + id); // add id here
     const json = await data.json();
     console.log(json);
 
@@ -33,7 +33,7 @@ const RestaurantMenu = () => {
         </div>
 
         <div>
-          <h1>Menue</h1>
+          <h1>Menu</h1>
           <ul>
             {Object.values(res?.menu?.items).map((item) => {
               <li key={item.id}>{item.name}</li>;
