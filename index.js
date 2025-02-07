@@ -10,6 +10,7 @@ import Body from "./Constants/Body";
 import Footer from "./Constants/Footer";
 import About from "./Constants/Routes/About";
 import Contact from "./Constants/Routes/Contact";
+import RestaurantMenu from "./Constants/Routes/RestaurantMenu";
 // Define your component
 
 const RootElement = () => {
@@ -39,6 +40,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+      },
+      {
+        path: "/restaurants/:id",
+        element: <RestaurantMenu />,
       },
     ],
   },
