@@ -5,25 +5,27 @@ const Header = () => {
   const [log, setLog] = useState(true);
   return (
     <div className="headr">
-      <a href="/">
+      <Link to="/">
         <img
           className="logo-img"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
         ></img>
-      </a>
+      </Link>
+
       <ul className="items">
-        <li>
-          <Link to="/"></Link>Home
-        </li>
-        <li>
-          <Link to="/about"></Link>About us
-        </li>
-        <li>
-          <Link to="/contact"></Link>Contact
-        </li>
-        <li>
-          <Link to="/cart"></Link>Cart
-        </li>
+        <Link to="/" className="links">
+          <li>Home</li>
+        </Link>
+        <Link to="/about" className="links">
+          <li>About Us</li>
+        </Link>
+        <Link to="/contact" className="links">
+          <li>Contact</li>
+        </Link>
+
+        <Link to="/cart" className="links">
+          <li>Cart</li>
+        </Link>
       </ul>
       <div className="loginButton">
         {log ? (

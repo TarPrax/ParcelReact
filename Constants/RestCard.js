@@ -3,6 +3,7 @@ import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
 import { Res_Api } from "./constants.js";
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router-dom";
 const RestCard = ({
   name,
   cloudinaryImageId,
