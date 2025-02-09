@@ -32,4 +32,9 @@
 }
 .links {
   margin-right: 10px;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: black;
 }

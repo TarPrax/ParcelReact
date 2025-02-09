@@ -26382,6 +26382,11 @@ const NoRestDisplay = ()=>{
     }, undefined);
 };
 _c1 = NoRestDisplay;
+async function getRestaurantdata() {
+    const response = await fetch((0, _constantsJs.Res_Api));
+    const data = await response.json();
+}
+getRestaurantdata();
 const DisplayCards = ()=>{
     _s();
     // const searchTxt = "KFC";
@@ -26396,7 +26401,7 @@ const DisplayCards = ()=>{
     ]);
     return resData.length == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(NoRestDisplay, {}, void 0, false, {
         fileName: "Constants/RestCard.js",
-        lineNumber: 57,
+        lineNumber: 64,
         columnNumber: 5
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -26413,7 +26418,7 @@ const DisplayCards = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 61,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26425,13 +26430,13 @@ const DisplayCards = ()=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 70,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 60,
+                lineNumber: 67,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26444,24 +26449,24 @@ const DisplayCards = ()=>{
                             key: rest.info.id,
                             __source: {
                                 fileName: "Constants/RestCard.js",
-                                lineNumber: 86,
+                                lineNumber: 93,
                                 columnNumber: 17
                             },
                             __self: undefined
                         })
                     }, rest.info.id, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 85,
+                        lineNumber: 92,
                         columnNumber: 15
                     }, undefined);
                 }) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(NoRestDisplay, {}, void 0, false, {
                     fileName: "Constants/RestCard.js",
-                    lineNumber: 91,
+                    lineNumber: 98,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 81,
+                lineNumber: 88,
                 columnNumber: 7
             }, undefined)
         ]
@@ -27837,7 +27842,7 @@ parcelHelpers.export(exports, "Res_Api", ()=>Res_Api);
 parcelHelpers.export(exports, "Res_Data_Api", ()=>Res_Data_Api);
 const IMG_CDN = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 const Res_Api = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1417761&lng=72.77094149999999";
-const Res_Data_Api = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1417761&lng=72.77094149999999&restaurantId=361952&catalog_qa=undefined&submitAction=ENTER";
+const Res_Data_Api = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.2244691&lng=72.8522864&restaurantId=";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"epPcH":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$feac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
@@ -27990,14 +27995,16 @@ const RestaurantMenu = ()=>{
     const param = (0, _reactRouterDom.useParams)();
     (0, _react.useEffect)(()=>{
         getRestaurantData();
-    });
+    }, []);
     async function getRestaurantData() {
-        const data = await fetch((0, _constants.Res_Data_Api) + id); // add id here
+        const data = await fetch((0, _constants.Res_Data_Api) + param.id); // add id here
+        console.log((0, _constants.Res_Data_Api) + param.id);
         const json = await data.json();
-        console.log(json);
+        // console.log(json);
         //You have to check the API data which this returns?
-        setRes(json.data);
-    //Check and Proceedgit
+        setRes(json.data?.cards[2]?.card?.card?.info);
+        //Check and Proceedgit
+        console.log(json.data?.cards[2]?.card?.card?.info);
     }
     if (!res) return null;
     else return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -28008,7 +28015,7 @@ const RestaurantMenu = ()=>{
                         children: "This is dynamically prdouced route"
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 26,
+                        lineNumber: 30,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -28018,35 +28025,35 @@ const RestaurantMenu = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 27,
+                        lineNumber: 31,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         children: res.name
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 28,
+                        lineNumber: 32,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: (0, _constants.IMG_CDN) + res.cloudinaryImageId
+                        src: (0, _constants.IMG_CDN) + res?.cloudinaryImageId
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 29,
+                        lineNumber: 33,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: res.area
+                        children: res?.locality
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 30,
+                        lineNumber: 35,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: res.city
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 31,
+                        lineNumber: 36,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -28056,13 +28063,13 @@ const RestaurantMenu = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 32,
+                        lineNumber: 37,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/Routes/RestaurantMenu.js",
-                lineNumber: 25,
+                lineNumber: 29,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28071,28 +28078,18 @@ const RestaurantMenu = ()=>{
                         children: "Menu"
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 36,
+                        lineNumber: 41,
                         columnNumber: 11
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                        children: Object.values(res?.menu?.items).map((item)=>{
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                children: item.name
-                            }, item.id, false, {
-                                fileName: "Constants/Routes/RestaurantMenu.js",
-                                lineNumber: 39,
-                                columnNumber: 15
-                            }, undefined);
-                        })
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {}, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 37,
+                        lineNumber: 42,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/Routes/RestaurantMenu.js",
-                lineNumber: 35,
+                lineNumber: 40,
                 columnNumber: 9
             }, undefined)
         ]

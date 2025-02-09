@@ -39,5 +39,11 @@
 
 .links {
   margin-right: 10px;
+  text-decoration: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }
 /*# sourceMappingURL=index.9e4c6fd2.css.map */

@@ -42,6 +42,13 @@ const NoRestDisplay = () => {
   return <h1>No Matching Restaurants to show </h1>;
 };
 
+async function getRestaurantdata(){
+  const response = await fetch(Res_Api);
+  const data = await response.json();
+  
+}
+
+getRestaurantdata();
 export const DisplayCards = () => {
   // const searchTxt = "KFC";
   const [resData, setResData] = useState(Res);
