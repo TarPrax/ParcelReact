@@ -11,6 +11,7 @@ import Footer from "./Constants/Footer";
 import About from "./Constants/Routes/About";
 import Contact from "./Constants/Routes/Contact";
 import RestaurantMenu from "./Constants/Routes/RestaurantMenu";
+import Profile from "./Constants/Routes/Profile";
 // Define your component
 
 const RootElement = () => {
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children:[{
+          path:"profile",
+          element:<Profile/>}
+        ]
       },
       {
         path: "/contact",
