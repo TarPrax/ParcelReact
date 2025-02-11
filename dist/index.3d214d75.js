@@ -26290,16 +26290,33 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Body", ()=>Body);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
 var _restCard = require("./RestCard");
+var _online = require("./Utils/Online");
+var _onlineDefault = parcelHelpers.interopDefault(_online);
+var _s = $RefreshSig$();
 const Body = ()=>{
+    _s();
+    const isOnline = (0, _onlineDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restCard.DisplayCards), {}, void 0, false, {
+        children: isOnline ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restCard.DisplayCards), {}, void 0, false, {
             fileName: "Constants/Body.js",
             lineNumber: 8,
-            columnNumber: 7
+            columnNumber: 24
+        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "This is offline"
+        }, void 0, false, {
+            fileName: "Constants/Body.js",
+            lineNumber: 8,
+            columnNumber: 43
         }, undefined)
     }, void 0, false);
 };
+_s(Body, "bAGQ+ieZRXkDkGis+biw2/pOcrw=", false, function() {
+    return [
+        (0, _onlineDefault.default)
+    ];
+});
 _c = Body;
 exports.default = Body;
 var _c;
@@ -26310,7 +26327,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./RestCard":"gAWmp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gAWmp":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","./RestCard":"gAWmp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Utils/Online":"7ZrSV"}],"gAWmp":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b818 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27887,7 +27904,45 @@ $RefreshReg$(_c, "Shimmer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8yFC4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7ZrSV":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$96b4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$96b4.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _s = $RefreshSig$();
+const useIsOnline = ()=>{
+    _s();
+    const [value, setValue] = (0, _react.useState)(true);
+    (0, _react.useEffect)(()=>{
+        const handelOnline = ()=>{
+            setValue(true);
+        };
+        const handelOffline = ()=>{
+            setValue(false);
+        };
+        window.addEventListener("online", handelOnline);
+        window.addEventListener("offline", handelOffline);
+        return ()=>{
+            window.removeEventListener("online", handelOnline);
+            window.removeEventListener("online", handelOffline);
+        };
+    }, []);
+    return value;
+};
+_s(useIsOnline, "YA+1fuPM8cocCeLHgXbd7LLnozg=");
+exports.default = useIsOnline;
+
+  $parcel$ReactRefreshHelpers$96b4.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8yFC4":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a93f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28094,24 +28149,13 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _constants = require("../constants");
+var _restaurantData = require("../Utils/RestaurantData");
+var _restaurantDataDefault = parcelHelpers.interopDefault(_restaurantData);
 var _s = $RefreshSig$();
 const RestaurantMenu = ()=>{
     _s();
-    const [res, setRes] = (0, _react.useState)(null);
     const param = (0, _reactRouterDom.useParams)();
-    (0, _react.useEffect)(()=>{
-        getRestaurantData();
-    }, []);
-    async function getRestaurantData() {
-        const data = await fetch((0, _constants.Res_Data_Api) + param.id); // add id here
-        console.log((0, _constants.Res_Data_Api) + param.id);
-        const json = await data.json();
-        // console.log(json);
-        //You have to check the API data which this returns?
-        setRes(json.data?.cards[2]?.card?.card?.info);
-        //Check and Proceedgit
-        console.log(json.data?.cards[2]?.card?.card?.info);
-    }
+    const res = (0, _restaurantDataDefault.default)(param.id);
     if (!res) return null;
     else return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -28121,7 +28165,7 @@ const RestaurantMenu = ()=>{
                         children: "This is dynamically prdouced route"
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 30,
+                        lineNumber: 16,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -28131,35 +28175,35 @@ const RestaurantMenu = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 31,
+                        lineNumber: 17,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         children: res.name
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 32,
+                        lineNumber: 18,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                         src: (0, _constants.IMG_CDN) + res?.cloudinaryImageId
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 33,
+                        lineNumber: 19,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: res?.locality
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 35,
+                        lineNumber: 20,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: res.city
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 36,
+                        lineNumber: 21,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -28169,13 +28213,13 @@ const RestaurantMenu = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 37,
+                        lineNumber: 22,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/Routes/RestaurantMenu.js",
-                lineNumber: 29,
+                lineNumber: 15,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28184,26 +28228,27 @@ const RestaurantMenu = ()=>{
                         children: "Menu"
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 41,
+                        lineNumber: 26,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {}, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
-                        lineNumber: 42,
+                        lineNumber: 27,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/Routes/RestaurantMenu.js",
-                lineNumber: 40,
+                lineNumber: 25,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(RestaurantMenu, "kc+cvRgyqF6eh6X/81cDy0LfsVk=", false, function() {
+_s(RestaurantMenu, "JcbXXJFRkYHwn3iVsOMcmziGTqo=", false, function() {
     return [
-        (0, _reactRouterDom.useParams)
+        (0, _reactRouterDom.useParams),
+        (0, _restaurantDataDefault.default)
     ];
 });
 _c = RestaurantMenu;
@@ -28216,7 +28261,44 @@ $RefreshReg$(_c, "RestaurantMenu");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../constants":"3PhkM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9yWEM":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../constants":"3PhkM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../Utils/RestaurantData":"br0dw"}],"br0dw":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5a52 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5a52.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _constants = require("../constants");
+var _s = $RefreshSig$();
+const useRestaurant = (resId)=>{
+    _s();
+    const [res, setRes] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        getRestaurantData();
+    }, []);
+    async function getRestaurantData() {
+        const data = await fetch((0, _constants.Res_Data_Api) + resId); // add id here
+        console.log((0, _constants.Res_Data_Api) + resId);
+        const json = await data.json();
+        // console.log(json);
+        //You have to check the API data which this returns?
+        setRes(json.data?.cards[2]?.card?.card?.info);
+    //Check and Proceedgit
+    }
+    return res;
+};
+_s(useRestaurant, "de8kVnQJdU6l/EQE9IimuMp22AI=");
+exports.default = useRestaurant;
+
+  $parcel$ReactRefreshHelpers$5a52.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","../constants":"3PhkM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9yWEM":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$9239 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

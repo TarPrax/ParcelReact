@@ -1,26 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN, Res_Data_Api } from "../constants";
+import useRestaurant from "../Utils/RestaurantData";
 const RestaurantMenu = () => {
-  const [res, setRes] = useState(null);
-
   const param = useParams();
- 
-  useEffect(() => {
-    getRestaurantData();
-  },[]);
-  async function getRestaurantData() {
-   
-    const data = await fetch(Res_Data_Api +param.id); // add id here
-    console.log(Res_Data_Api +param.id)
-    const json = await data.json();
-    // console.log(json);
 
-    //You have to check the API data which this returns?
-    setRes(json.data?.cards[2]?.card?.card?.info);
-    //Check and Proceedgit
-    console.log(json.data?.cards[2]?.card?.card?.info)
-  }
+  const res = useRestaurant(param.id);
+
   if (!res) {
     return null;
   } else
@@ -30,8 +16,7 @@ const RestaurantMenu = () => {
           <h1>This is dynamically prdouced route</h1>
           <h3>Dynamic data from : {param.id}</h3>
           <h2>{res.name}</h2>
-          <img src={IMG_CDN + res?.
-cloudinaryImageId} />
+          <img src={IMG_CDN + res?.cloudinaryImageId} />
           <h3>{res?.locality}</h3>
           <h3>{res.city}</h3>
           <h3>{res.avgRating} stars</h3>

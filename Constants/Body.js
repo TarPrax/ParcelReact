@@ -1,13 +1,11 @@
+import { useState } from "react";
 import { DisplayCards } from "./RestCard";
+import useIsOnline from "./Utils/Online";
 
 export const Body = () => {
-  return (
-    <>
-      
+  const isOnline = useIsOnline();
 
-      <DisplayCards />
-    </>
-  );
+  return <>{isOnline ? <DisplayCards /> : <h1>This is offline</h1>}</>;
 };
 
 export default Body;
