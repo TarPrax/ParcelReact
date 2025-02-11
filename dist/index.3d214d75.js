@@ -26141,10 +26141,13 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+var _online = require("./Utils/Online");
+var _onlineDefault = parcelHelpers.interopDefault(_online);
 var _s = $RefreshSig$();
 const Header = ()=>{
     _s();
     const [log, setLog] = (0, _react.useState)(true);
+    const userStatus = (0, _onlineDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "headr",
         children: [
@@ -26155,12 +26158,12 @@ const Header = ()=>{
                     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIlbz7UxtD02us1-KilNMvEeHSG5jP3L6Yyw&s"
                 }, void 0, false, {
                     fileName: "Constants/Header.js",
-                    lineNumber: 9,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "Constants/Header.js",
-                lineNumber: 8,
+                lineNumber: 11,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -26173,21 +26176,6 @@ const Header = ()=>{
                             children: "Home"
                         }, void 0, false, {
                             fileName: "Constants/Header.js",
-                            lineNumber: 17,
-                            columnNumber: 11
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "Constants/Header.js",
-                        lineNumber: 16,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                        to: "/about",
-                        className: "links",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: "About Us"
-                        }, void 0, false, {
-                            fileName: "Constants/Header.js",
                             lineNumber: 20,
                             columnNumber: 11
                         }, undefined)
@@ -26197,10 +26185,10 @@ const Header = ()=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                        to: "/contact",
+                        to: "/about",
                         className: "links",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: "Contact"
+                            children: "About Us"
                         }, void 0, false, {
                             fileName: "Constants/Header.js",
                             lineNumber: 23,
@@ -26212,63 +26200,95 @@ const Header = ()=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                        to: "/contact",
+                        className: "links",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Contact"
+                        }, void 0, false, {
+                            fileName: "Constants/Header.js",
+                            lineNumber: 26,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/cart",
                         className: "links",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "Constants/Header.js",
-                            lineNumber: 27,
+                            lineNumber: 30,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "Constants/Header.js",
-                        lineNumber: 26,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Constants/Header.js",
-                lineNumber: 15,
+                lineNumber: 18,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "loginButton",
-                children: log ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: ()=>{
-                        setLog(false);
-                    },
-                    children: [
-                        " ",
-                        "Logout"
-                    ]
-                }, void 0, true, {
-                    fileName: "Constants/Header.js",
-                    lineNumber: 32,
-                    columnNumber: 11
-                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: ()=>{
-                        setLog(true);
-                    },
-                    children: "Login"
-                }, void 0, false, {
-                    fileName: "Constants/Header.js",
-                    lineNumber: 41,
-                    columnNumber: 11
-                }, undefined)
-            }, void 0, false, {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                        children: [
+                            " ",
+                            userStatus ? "online" : "offline",
+                            " "
+                        ]
+                    }, void 0, true, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, undefined),
+                    log ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>{
+                            setLog(false);
+                        },
+                        children: [
+                            " ",
+                            "Logout"
+                        ]
+                    }, void 0, true, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 37,
+                        columnNumber: 11
+                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>{
+                            setLog(true);
+                        },
+                        children: "Login"
+                    }, void 0, false, {
+                        fileName: "Constants/Header.js",
+                        lineNumber: 46,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "Constants/Header.js",
-                lineNumber: 30,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Constants/Header.js",
-        lineNumber: 7,
+        lineNumber: 10,
         columnNumber: 5
     }, undefined);
 };
-_s(Header, "VOTjDHOQ3H7YvZ7JfLb9vjQaN6I=");
+_s(Header, "mmQhCrA/g/PKk3aC5DTYinnHzis=", false, function() {
+    return [
+        (0, _onlineDefault.default)
+    ];
+});
 _c = Header;
 exports.default = Header;
 var _c;
@@ -26279,7 +26299,45 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fj86V":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Utils/Online":"7ZrSV"}],"7ZrSV":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$96b4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$96b4.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _s = $RefreshSig$();
+const useIsOnline = ()=>{
+    _s();
+    const [value, setValue] = (0, _react.useState)(true);
+    (0, _react.useEffect)(()=>{
+        const handelOnline = ()=>{
+            setValue(true);
+        };
+        const handelOffline = ()=>{
+            setValue(false);
+        };
+        window.addEventListener("online", handelOnline);
+        window.addEventListener("offline", handelOffline);
+        return ()=>{
+            window.removeEventListener("online", handelOnline);
+            window.removeEventListener("online", handelOffline);
+        };
+    }, []);
+    return value;
+};
+_s(useIsOnline, "YA+1fuPM8cocCeLHgXbd7LLnozg=");
+exports.default = useIsOnline;
+
+  $parcel$ReactRefreshHelpers$96b4.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fj86V":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$f531 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27904,45 +27962,7 @@ $RefreshReg$(_c, "Shimmer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7ZrSV":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$96b4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$96b4.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _s = $RefreshSig$();
-const useIsOnline = ()=>{
-    _s();
-    const [value, setValue] = (0, _react.useState)(true);
-    (0, _react.useEffect)(()=>{
-        const handelOnline = ()=>{
-            setValue(true);
-        };
-        const handelOffline = ()=>{
-            setValue(false);
-        };
-        window.addEventListener("online", handelOnline);
-        window.addEventListener("offline", handelOffline);
-        return ()=>{
-            window.removeEventListener("online", handelOnline);
-            window.removeEventListener("online", handelOffline);
-        };
-    }, []);
-    return value;
-};
-_s(useIsOnline, "YA+1fuPM8cocCeLHgXbd7LLnozg=");
-exports.default = useIsOnline;
-
-  $parcel$ReactRefreshHelpers$96b4.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8yFC4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8yFC4":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a93f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
