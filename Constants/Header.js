@@ -28,6 +28,10 @@ const Header = () => {
 
         <Link to="/cart" className="links">
           <li>Cart</li>
+        </Link>   
+
+        <Link to="/instamart" className="links">
+          <li>Instamart</li>
         </Link>
       </ul>
       <div className="loginButton">
