@@ -12,9 +12,9 @@ const RestCard = ({
   totalRatingsString,
 }) => {
   return (
-    <div className="card">
-      <img src={IMG_CDN + cloudinaryImageId}></img>
-      <h3>{name}</h3>
+    <div className="w-56 h-105 p-4 m-2 shadow-lg bg-pink-50 rounded-3xl">
+      <img className="rounded-4xl" src={IMG_CDN + cloudinaryImageId}></img>
+      <h3 className="text-xl font-bold ">{name}</h3>
       <h3>{cuisines.slice(0, 4).join(", ")}</h3>
       <h3>
         {avgRating} Star . {totalRatingsString} Ratings
@@ -42,10 +42,9 @@ const NoRestDisplay = () => {
   return <h1>No Matching Restaurants to show </h1>;
 };
 
-async function getRestaurantdata(){
+async function getRestaurantdata() {
   const response = await fetch(Res_Api);
   const data = await response.json();
-  
 }
 
 getRestaurantdata();
@@ -64,18 +63,18 @@ export const DisplayCards = () => {
     <NoRestDisplay />
   ) : (
     <>
-      <div className="search-container">
+      <div className="my-4">
         <input
           type="text"
           placeholder="Search"
           value={searchTxt}
-          className="search-input"
+          className="border p-2 rounded mr-1"
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         ></input>
         <button
-          className="search-btn"
+          className="search-btn bg-purple-800 text-white rounded-lg p-1 hover:bg-violet-600 "
           onClick={() => {
             const data = filterData(searchTxt, resData);
             setResData(data);
@@ -85,7 +84,7 @@ export const DisplayCards = () => {
         </button>
       </div>
 
-      <div className="rest-list">
+      <div className="place-content-around flex flex-wrap bg-purple-100">
         {resData.length > 0 ? (
           resData.map((rest) => {
             return (

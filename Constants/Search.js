@@ -4,7 +4,7 @@ export const SearchFunction = () => {
   const inputField = "Please Search Here";
 
   return (
-    <div className="search">
+    <div className="">
       <input
         type="text"
         value={search}
