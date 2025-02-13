@@ -5,7 +5,7 @@ import UserContext from "./Utils/userContex";
 const Header = () => {
   const [log, setLog] = useState(true);
   const userStatus = useIsOnline();
-  const { user } = useContext(URLserContext);
+  const { user } = useContext(UserContext);
   return (
     <div className="flex justify-between bg-pink-50 shadow-md  sm:bg-blue-50 md:bg-yellow-100">
       <Link to="/">

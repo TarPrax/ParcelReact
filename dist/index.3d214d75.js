@@ -2987,7 +2987,8 @@ const RootElement = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContexDefault.default).Provider, {
             value: {
-                user: user
+                user: user,
+                setUser: setUser
             },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
@@ -26194,7 +26195,7 @@ const Header = ()=>{
     _s();
     const [log, setLog] = (0, _react.useState)(true);
     const userStatus = (0, _onlineDefault.default)();
-    const { user } = (0, _react.useContext)(URLserContext);
+    const { user } = (0, _react.useContext)((0, _userContexDefault.default));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "flex justify-between bg-pink-50 shadow-md  sm:bg-blue-50 md:bg-yellow-100",
         children: [
@@ -26588,6 +26589,7 @@ const DisplayCards = ()=>{
     const [disp, setDisp] = (0, _react.useState)();
     const [searchTxt, setSearchText] = (0, _react.useState)("");
     const [act, setAct] = (0, _react.useState)("false");
+    const { user, setUser } = (0, _react.useContext)((0, _userContexJsDefault.default));
     (0, _react.useEffect)(()=>{
         setResData((0, _restaurants.Res));
     }, [
@@ -26633,6 +26635,19 @@ const DisplayCards = ()=>{
                 lineNumber: 69,
                 columnNumber: 7
             }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                value: user.name,
+                onChange: (e)=>{
+                    setUser({
+                        name: e.target.value,
+                        email: "ff@gmail.com"
+                    });
+                }
+            }, void 0, false, {
+                fileName: "Constants/RestCard.js",
+                lineNumber: 89,
+                columnNumber: 7
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "place-content-around flex flex-wrap bg-purple-100",
                 children: resData.length > 0 ? resData.map((rest)=>{
@@ -26643,30 +26658,30 @@ const DisplayCards = ()=>{
                             key: rest.info.id,
                             __source: {
                                 fileName: "Constants/RestCard.js",
-                                lineNumber: 95,
+                                lineNumber: 100,
                                 columnNumber: 17
                             },
                             __self: undefined
                         })
                     }, rest.info.id, false, {
                         fileName: "Constants/RestCard.js",
-                        lineNumber: 94,
+                        lineNumber: 99,
                         columnNumber: 15
                     }, undefined);
                 }) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(NoRestDisplay, {}, void 0, false, {
                     fileName: "Constants/RestCard.js",
-                    lineNumber: 100,
+                    lineNumber: 105,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "Constants/RestCard.js",
-                lineNumber: 90,
+                lineNumber: 95,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s1(DisplayCards, "0qOlLkzIHryLKbPmTJAY395gXtQ=");
+_s1(DisplayCards, "2aIr9wMpllPzNDerEu62Fz+xkF4=");
 _c2 = DisplayCards;
 exports.default = RestCard;
 var _c, _c1, _c2;

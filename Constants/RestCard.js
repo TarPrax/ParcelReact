@@ -57,7 +57,7 @@ export const DisplayCards = () => {
   const [disp, setDisp] = useState();
   const [searchTxt, setSearchText] = useState("");
   const [act, setAct] = useState("false");
-
+  const { user, setUser } = useContext(userContext);
   useEffect(() => {
     setResData(Res);
   }, [searchTxt]);
@@ -86,7 +86,12 @@ export const DisplayCards = () => {
           Search
         </button>
       </div>
-
+      <input
+        value={user.name}
+        onChange={(e) => {
+          setUser({ name: e.target.value, email: "ff@gmail.com" });
+        }}
+      ></input>
       <div className="place-content-around flex flex-wrap bg-purple-100">
         {resData.length > 0 ? (
           resData.map((rest) => {
