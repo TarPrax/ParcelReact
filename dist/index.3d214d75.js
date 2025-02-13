@@ -3096,7 +3096,7 @@ $RefreshReg$(_c1, "RootElement");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","react-router-dom":"9xmpe","./Constants/Routes/Error":"65XlD","./Constants/Header":"lfe44","./Constants/Body":"fj86V","./Constants/Footer":"8yFC4","./Constants/Routes/About":"jdQ3D","./Constants/Routes/Contact":"2ZORg","./Constants/Routes/RestaurantMenu":"jdXnM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Constants/Routes/Profile":"9yWEM","./Constants/Shimmer":"epPcH","de61c7e6d56eca1e":"6tTV7"}],"iTorj":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","react-router-dom":"9xmpe","./Constants/Routes/Error":"65XlD","./Constants/Header":"lfe44","./Constants/Body":"fj86V","./Constants/Footer":"8yFC4","./Constants/Routes/About":"jdQ3D","./Constants/Routes/Contact":"2ZORg","./Constants/Routes/RestaurantMenu":"jdXnM","./Constants/Routes/Profile":"9yWEM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Constants/Shimmer":"epPcH","de61c7e6d56eca1e":"6tTV7"}],"iTorj":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -28223,10 +28223,16 @@ const RestaurantMenu = ()=>{
     else return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "border-amber-300 rounded-b-2xl w-64 border-2 m-2 p-2 ",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: "This is dynamically prdouced route"
-                    }, void 0, false, {
+                        className: "text-3xl my-1",
+                        children: [
+                            "Order happiness from ",
+                            res.name,
+                            " "
+                        ]
+                    }, void 0, true, {
                         fileName: "Constants/Routes/RestaurantMenu.js",
                         lineNumber: 16,
                         columnNumber: 11
@@ -28249,6 +28255,7 @@ const RestaurantMenu = ()=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        className: "border-pink-200 rounded-3xl",
                         src: (0, _constants.IMG_CDN) + res?.cloudinaryImageId
                     }, void 0, false, {
                         fileName: "Constants/Routes/RestaurantMenu.js",

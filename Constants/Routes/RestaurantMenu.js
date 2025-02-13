@@ -12,11 +12,11 @@ const RestaurantMenu = () => {
   } else
     return (
       <>
-        <div>
-          <h1>This is dynamically prdouced route</h1>
+        <div className="border-amber-300 rounded-b-2xl w-64 border-2 m-2 p-2 ">
+          <h1 className="text-3xl my-1">Order happiness from {res.name} </h1>
           <h3>Dynamic data from : {param.id}</h3>
           <h2>{res.name}</h2>
-          <img src={IMG_CDN + res?.cloudinaryImageId} />
+          <img className="border-pink-200 rounded-3xl" src={IMG_CDN + res?.cloudinaryImageId} />
           <h3>{res?.locality}</h3>
           <h3>{res.city}</h3>
           <h3>{res.avgRating} stars</h3>

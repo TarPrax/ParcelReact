@@ -627,10 +627,12 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const Section = ({ name, description })=>{
+var _react = require("react");
+var _s = $RefreshSig$();
+const Section = ({ name, description, display, setDisplay })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "border-2 border-indigo p-4 m-4",
+            className: "border-2  p-4 m-4 border-amber-600",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                     children: [
@@ -639,93 +641,110 @@ const Section = ({ name, description })=>{
                     ]
                 }, void 0, true, {
                     fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                    lineNumber: 5,
+                    lineNumber: 7,
                     columnNumber: 9
                 }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                display === name && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: description
                 }, void 0, false, {
                     fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                    lineNumber: 6,
-                    columnNumber: 9
+                    lineNumber: 8,
+                    columnNumber: 29
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: ()=>{
+                        setDisplay(name);
+                    },
                     className: "border-2 rounded-4 m-2 p-1",
                     children: "Show More "
                 }, void 0, false, {
                     fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                    lineNumber: 7,
+                    lineNumber: 9,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: ()=>{
+                        setDisplay(null);
+                    },
                     className: "border-2 rounded-4 p-1",
                     children: "Hide"
                 }, void 0, false, {
                     fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                    lineNumber: 8,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "Constants/Utils/LazyComponents/Instamart.js",
-            lineNumber: 4,
+            lineNumber: 6,
             columnNumber: 7
         }, undefined)
     }, void 0, false);
 };
 _c = Section;
 const Instamart = ()=>{
+    _s();
+    const [display, setDisplay] = (0, _react.useState)(null);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "This is Instamart"
             }, void 0, false, {
                 fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                lineNumber: 17,
+                lineNumber: 24,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "Enter your current location"
             }, void 0, false, {
                 fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                lineNumber: 18,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
-                name: "first",
-                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet"
-            }, void 0, false, {
-                fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                lineNumber: 20,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
-                name: "second",
-                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet"
-            }, void 0, false, {
-                fileName: "Constants/Utils/LazyComponents/Instamart.js",
                 lineNumber: 25,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
-                name: "third",
-                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet"
+                name: "first",
+                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet",
+                display: display,
+                setDisplay: setDisplay
             }, void 0, false, {
                 fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                lineNumber: 30,
+                lineNumber: 27,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
+                name: "second",
+                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet",
+                display: display,
+                setDisplay: setDisplay
+            }, void 0, false, {
+                fileName: "Constants/Utils/LazyComponents/Instamart.js",
+                lineNumber: 32,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
+                name: "third",
+                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet",
+                display: display,
+                setDisplay: setDisplay
+            }, void 0, false, {
+                fileName: "Constants/Utils/LazyComponents/Instamart.js",
+                lineNumber: 37,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
                 name: "fourth",
-                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet"
+                description: "about us page Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus, turpis sit amet interdum tempor, felis erat luctus justo, sed dictum sem elit ac nulla. Curabitur vel ligula eu metus sodales facilisis. Nam euismod convallis nisl, eget euismod enim tempor sed. Vivamus venenatis tortor nec nisl fermentum, at malesuada nisi consequat. Etiam ac nisl eu risus hendrerit gravida. Ut volutpat mauris et nibh volutpat, sit amet faucibus augue aliquam. Aliquam erat volutpat. Ut auctor dui ac magna maximus fermentum. Fusce id risus sed lectus consectetur laoreet",
+                display: display,
+                setDisplay: setDisplay
             }, void 0, false, {
                 fileName: "Constants/Utils/LazyComponents/Instamart.js",
-                lineNumber: 35,
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
+_s(Instamart, "n+/K0MAdZqFEMnAU8L3EbVvg9AE=");
 _c1 = Instamart;
 exports.default = Instamart;
 var _c, _c1;
@@ -737,6 +756,6 @@ $RefreshReg$(_c1, "Instamart");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["aQL8O","hdIyi"], null, "parcelRequire94c2")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}]},["aQL8O","hdIyi"], null, "parcelRequire94c2")
 
 //# sourceMappingURL=Instamart.8d4c970e.js.map
