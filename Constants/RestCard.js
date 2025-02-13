@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Res } from "./Restaurants";
 import { IMG_CDN } from "./constants.js";
 import { Res_Api } from "./constants.js";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
+import userContext from "./Utils/userContex.js";
 const RestCard = ({
   name,
   cloudinaryImageId,
@@ -11,6 +12,7 @@ const RestCard = ({
   avgRating,
   totalRatingsString,
 }) => {
+  const { user } = useContext(userContext);
   return (
     <div className="w-56 h-105 p-4 m-2 shadow-lg bg-pink-50 rounded-3xl">
       <img className="rounded-4xl" src={IMG_CDN + cloudinaryImageId}></img>
@@ -19,6 +21,7 @@ const RestCard = ({
       <h3>
         {avgRating} Star . {totalRatingsString} Ratings
       </h3>
+      <h5>{user.name}</h5>
     </div>
   );
 };

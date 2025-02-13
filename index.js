@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./Constants/Routes/Error";
@@ -13,17 +13,25 @@ import Contact from "./Constants/Routes/Contact";
 import RestaurantMenu from "./Constants/Routes/RestaurantMenu";
 import Profile from "./Constants/Routes/Profile";
 import Shimmer from "./Constants/Shimmer";
- 
+import UserContext from "./Constants/Utils/userContex";
 
-const Instamart =lazy(()=>import("./Constants/Utils/LazyComponents/Instamart"));
+const Instamart = lazy(() =>
+  import("./Constants/Utils/LazyComponents/Instamart")
+);
 // Define your component
 
 const RootElement = () => {
+  const [user, setUser] = useState({
+    name: "New Name",
+    email: "NewEmail@gmail.com",
+  });
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider value={{ user: user }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </>
   );
 };
@@ -37,10 +45,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
-        children:[{
-          path:"profile",
-          element:<Profile/>}
-        ]
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -53,14 +63,13 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:id",
         element: <RestaurantMenu />,
-      },  
+      },
       {
         path: "/instamart",
         element: (
-        
-        <Suspense fallback={<h1>Still waiting</h1>}>
-<Instamart />
-        </Suspense>
+          <Suspense fallback={<h1>Still waiting</h1>}>
+            <Instamart />
+          </Suspense>
         ),
       },
     ],
