@@ -13,8 +13,10 @@ const RestCard = ({
   totalRatingsString,
 }) => {
   const { user } = useContext(userContext);
+  //  const[k,setK]
+
   return (
-    <div className="w-56 h-105 p-4 m-2 shadow-lg bg-pink-50 rounded-3xl">
+    <div className="w-56 h-115 p-4 m-2 shadow-lg bg-pink-50 rounded-3xl">
       <img className="rounded-4xl" src={IMG_CDN + cloudinaryImageId}></img>
       <h3 className="text-xl font-bold ">{name}</h3>
       <h3>{cuisines.slice(0, 4).join(", ")}</h3>
@@ -96,9 +98,11 @@ export const DisplayCards = () => {
         {resData.length > 0 ? (
           resData.map((rest) => {
             return (
-              <Link to={"/restaurants/" + rest.info.id} key={rest.info.id}>
-                <RestCard {...rest.info} key={rest.info.id}></RestCard>
-              </Link>
+              <>
+                <Link to={"/restaurants/" + rest.info.id} key={rest.info.id}>
+                  <RestCard {...rest.info} key={rest.info.id}></RestCard>
+                </Link>
+              </>
             );
           })
         ) : (
