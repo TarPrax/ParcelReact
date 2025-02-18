@@ -2,10 +2,12 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useIsOnline from "./Utils/Online";
 import UserContext from "./Utils/userContex";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [log, setLog] = useState(true);
   const userStatus = useIsOnline();
-  const { user } = useContext(UserContext);
+  const cart = useSelector((state) => state.cart.items.length);
+
   return (
     <div className="flex justify-between bg-pink-50 shadow-md  sm:bg-blue-50 md:bg-yellow-100">
       <Link to="/">
@@ -29,6 +31,7 @@ const Header = () => {
 
         <Link to="/cart" className="px-2">
           <li>Cart</li>
+          <p className="text-sm">{cart}</p>
         </Link>
 
         <Link to="/instamart" className="lpx-2">
@@ -38,7 +41,7 @@ const Header = () => {
 
       <div className="loginButton">
         <h4> {userStatus ? "online" : "offline"} </h4>
-        <span className="p-10 font-bold text-red-900">{user.name}</span>
+
         {log ? (
           <button
             onClick={() => {

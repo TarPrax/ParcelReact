@@ -12,7 +12,7 @@ const RestCard = ({
   avgRating,
   totalRatingsString,
 }) => {
-  const { user } = useContext(userContext);
+  // const { user } = useContext(userContext);
   //  const[k,setK]
 
   return (
@@ -23,7 +23,7 @@ const RestCard = ({
       <h3>
         {avgRating} Star . {totalRatingsString} Ratings
       </h3>
-      <h5>{user.name}</h5>
+   
     </div>
   );
 };
@@ -88,12 +88,7 @@ export const DisplayCards = () => {
           Search
         </button>
       </div>
-      <input
-        value={user.name}
-        onChange={(e) => {
-          setUser({ name: e.target.value, email: "ff@gmail.com" });
-        }}
-      ></input>
+
       <div className="place-content-around flex flex-wrap bg-purple-100">
         {resData.length > 0 ? (
           resData.map((rest) => {
@@ -108,8 +103,6 @@ export const DisplayCards = () => {
         ) : (
           <NoRestDisplay />
         )}
-
-        {}
       </div>
     </>
   );

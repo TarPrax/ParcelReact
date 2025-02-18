@@ -11,7 +11,7 @@ export const SearchFunction = () => {
         onChange={(e) => {
           setSearch(e);
         }}
-      ></input> 
+      ></input>
 
       <button type="submit">Search here + {search}</button>
     </div>

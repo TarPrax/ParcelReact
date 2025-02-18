@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN, Res_Data_Api } from "../constants";
 import useRestaurant from "../Utils/RestaurantData";
 import useMenu from "../Utils/MenuData";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem, emptyCart } from "../../Slices/CartSlice";
 const RestaurantMenu = () => {
   const param = useParams();
 
@@ -10,6 +12,11 @@ const RestaurantMenu = () => {
   const Menu = useMenu();
 
   console.log(Menu);
+  const CartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const addCart = (item) => {
+    dispatch(addItem(item.id));
+  };
 
   if (!res) {
     return null;
@@ -37,9 +44,12 @@ const RestaurantMenu = () => {
                 return (
                   <li key={item.id} className="text-md m-2 hover:bg-gray-100">
                     {item.name}{" "}
-                    <button className="bg-green-200 border ml-2 hover:bg-green-300 text-xs cursor-pointer rounded-md p-1">
+                    <button
+                      className="bg-green-200 border ml-2 hover:bg-green-300 text-xs cursor-pointer rounded-md p-1"
+                      onClick={() => addCart(item)}
+                    >
                       Add me
-                    </button>{" "}
+                    </button>
                   </li>
                 );
               })}
